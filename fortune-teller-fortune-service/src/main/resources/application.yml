@@ -3,6 +3,17 @@ spring:
     database: MYSQL
     hibernate:
       ddl-auto: create-drop
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      secrets:
+        name: db-secret
+      reload:
+        enabled: true
+      config:
+        name: spring-boot-bootstrap
+        namespace: default
 
 ribbon:
   IsSecure: false
@@ -12,3 +23,4 @@ management:
     web:
       exposure:
         include: "*"
+

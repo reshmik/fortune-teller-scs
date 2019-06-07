@@ -19,6 +19,8 @@
 
 	<properties>
 		<start-class>io.spring.cloud.samples.fortuneteller.fortuneservice.Application</start-class>
+		<spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+		<spring.cloud.k8s.version>1.0.1.RELEASE</spring.cloud.k8s.version>
 	</properties>
 
 	<dependencies>
@@ -34,14 +36,27 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!--spring cloud k8s-->
+		<!--<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes</artifactId>
+		</dependency>-->
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-kubernetes-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+		</dependency>
+		<!--<dependency>
 			<groupId>io.pivotal.spring.cloud</groupId>
 			<artifactId>spring-cloud-services-starter-config-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.pivotal.spring.cloud</groupId>
 			<artifactId>spring-cloud-services-starter-service-registry</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
@@ -57,6 +72,25 @@
 			<version>2.2.6</version>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-kubernetes-dependencies</artifactId>
+				<version>${spring.cloud.k8s.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
