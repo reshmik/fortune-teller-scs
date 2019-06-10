@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: fortunes
   labels:
-    name: fortune-service-service
+    name: fortune-service
 spec:
   type: NodePort
   ports:
@@ -29,15 +29,14 @@ spec:
       labels:
         name: fortune-service
     spec:
+      serviceAccountName: default
       containers:
         - image: kathywan/fortune-service
           name: fortune-service
           ports:
             - containerPort: 8080
           env:
-            - name: MYSQL_USERNAME
-              value: MYSQL_JDBC_URL
-            - name: SPRING_DATASOURCE_USER
+            - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: db-secret

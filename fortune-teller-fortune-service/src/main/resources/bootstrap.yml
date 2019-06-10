@@ -1,3 +1,10 @@
 spring:
   application:
     name: fortunes
+#  cloud:
+#    kubernetes:
+#      config:
+#        name: fortunes
+#        namespace: default
+#        sources:
+#          - name: fortune-svc-config

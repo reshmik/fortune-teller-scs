@@ -1,19 +1,10 @@
 spring:
   jpa:
-    database: MYSQL
+#    database: MYSQL
     hibernate:
       ddl-auto: create-drop
-  cloud:
-    kubernetes:
-      discovery:
-        enabled: true
-      secrets:
-        name: db-secret
-      reload:
-        enabled: true
-      config:
-        name: spring-boot-bootstrap
-        namespace: default
+#  datasource:
+#    url: jdbc:mysql://fortune-mysql:3306/fortunesdb
 
 ribbon:
   IsSecure: false
@@ -24,3 +15,14 @@ management:
       exposure:
         include: "*"
 
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          kubernetes:
+            config: DEBUG
+    io:
+      fabric8:
+        kubernetes:
+          client: DEBUG
