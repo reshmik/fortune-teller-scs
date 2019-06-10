@@ -1,0 +1,5 @@
+package io.spring.cloud.samples.fortuneteller.ui.config;
+
+public class UIConfig {
+
+}

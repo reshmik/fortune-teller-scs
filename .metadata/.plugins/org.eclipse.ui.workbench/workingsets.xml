@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1559838697008_0" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=fortune-teller-fortune-service/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=fortune-teller-fortune-service/src\/main\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=fortune-teller-ui/src\/main\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=fortune-teller-ui/src\/main\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1559838697036_1" label="Java Test Sources" name="Java Test Sources">
+<item elementID="=fortune-teller-ui/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1559838852094_3" label="fortune-teller" name="fortune-teller">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/fortune-teller-fortune-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/fortune-teller-ui" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1559838699119_2" label="Window Working Set" name="Aggregate for window 1559838699118"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1559917516993_4" label="Window Working Set" name="Aggregate for window 1559917516992"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1560178973831_5" label="Window Working Set" name="Aggregate for window 1560178973831"/>
+</workingSetManager>

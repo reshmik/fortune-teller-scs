@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ui
+  cloud:
+    kubernetes:
+      config:
+        name: default-name
+        namespace: default-namespace
+        sources:
+         # Spring Cloud Kubernetes will lookup a ConfigMap named c1 in namespace default-namespace
+         - name: c1
+         # Spring Cloud Kubernetes will lookup a ConfigMap named default-name in whatever namespace n2
+         - namespace: n2
+         # Spring Cloud Kubernetes will lookup a ConfigMap named c3 in namespace n3
+         - namespace: n3
+           name: c3
