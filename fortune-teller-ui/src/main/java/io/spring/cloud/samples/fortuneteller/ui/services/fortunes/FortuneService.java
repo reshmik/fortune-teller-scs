@@ -15,7 +15,8 @@
  */
  package io.spring.cloud.samples.fortuneteller.ui.services.fortunes;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import io.spring.cloud.samples.fortuneteller.ui.config.UIConfig;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
@@ -30,13 +31,16 @@ public class FortuneService {
 
     @Autowired
     RestTemplate restTemplate;
+    
+    @Autowired
+    private UIConfig config;
+ 
 
-//    @HystrixCommand(fallbackMethod = "fallbackFortune")
     public Fortune randomFortune() {
-        return restTemplate.getForObject("http://fortunes/random", Fortune.class);
+        Fortune fortune=restTemplate.getForObject("http://fortunes/random", Fortune.class);
+        if(fortune!=null)
+        return fortune;
+        return new Fortune(42L, config.getMessage());
     }
 
-    private Fortune fallbackFortune() {
-        return new Fortune(42L, fortuneProperties.getFallbackFortune());
-    }
 }
