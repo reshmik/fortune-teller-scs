@@ -5,10 +5,10 @@ metadata:
   labels:
     name: fortune-service
 spec:
-  type: NodePort
+#  type: NodePort
   ports:
     - port: 8080
-      nodePort: 30080
+#      nodePort: 30080
       targetPort: 8080
   selector:
     name: fortune-service
@@ -29,13 +29,16 @@ spec:
       labels:
         name: fortune-service
     spec:
-      serviceAccountName: fortunesacct
       containers:
         - image: kathywan/fortune-service
           name: fortune-service
           ports:
             - containerPort: 8080
           env:
+            - name: SPRING_JPA_DATABASE
+              value: MYSQL
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://fortune-mysql:3306/fortunesdb
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -46,20 +49,20 @@ spec:
                 secretKeyRef:
                   name: db-secret
                   key: password
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: fortunes
-data:
-  application.yml: |-
-    spring:
-      profiles: kubernetes
-    spring:
-      jpa:
-        database: MYSQL
-      datasource:
-        url: jdbc:mysql://fortune-mysql:3306/fortunesdb
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: fortunes
+#data:
+#  application.yml: |-
+#    spring:
+#      profiles: kubernetes
+#    spring:
+#      jpa:
+#        database: MYSQL
+#      datasource:
+#        url: jdbc:mysql://fortune-mysql:3306/fortunesdb
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -89,12 +92,9 @@ kind: ClusterRoleBinding
 metadata:
   name: cluster-read-rolebinding
 subjects:
-#  - kind: ServiceAccount
-#    name: fortunesacct
-#    namespace: default
-  - kind: Group
-    name: system:serviceaccounts
-    apiGroup: rbac.authorization.k8s.io
+  - kind: ServiceAccount
+    name: default
+    namespace: default
 roleRef:
   kind: ClusterRole
   name: cluster-read-role
