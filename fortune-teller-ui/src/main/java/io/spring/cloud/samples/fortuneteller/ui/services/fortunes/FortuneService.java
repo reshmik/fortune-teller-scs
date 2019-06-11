@@ -26,21 +26,31 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class FortuneService {
 
-//    @Autowired
-//    FortuneProperties fortuneProperties;
 
     @Autowired
     RestTemplate restTemplate;
     
     @Autowired
     private UIConfig config;
- 
+    Fortune fortune = null;
 
     public Fortune randomFortune() {
-        Fortune fortune=restTemplate.getForObject("http://fortunes/random", Fortune.class);
-        if(fortune!=null)
-        return fortune;
-        return new Fortune(42L, config.getMessage());
+    	
+    	try {
+    		
+    		fortune=restTemplate.getForObject("http://fortunes/random", Fortune.class);
+    		if(fortune!=null)
+    			return fortune;
+    		    return new Fortune(42L, config.getMessage());
+    			
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("Printing out exception"+e.getMessage());
+    		return new Fortune(42L, config.getMessage());
+    	}	
+    	        
+        
     }
 
 }

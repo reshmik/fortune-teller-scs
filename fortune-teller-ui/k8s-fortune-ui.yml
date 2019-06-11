@@ -1,13 +1,14 @@
 apiVersion: v1
-kind: NodePort
+kind: Service
 metadata:
   name: fortune-ui-service
   labels:
     name: fortune-ui-service
 spec:
+  type: LoadBalancer
   ports:
-    - port: 18080
-      targetPort: 8080
+    - port: 8080
+      name: ui
   selector:
     name: fortune-ui
 ---
@@ -32,11 +33,3 @@ spec:
           name: fortune-ui
           ports:
             - containerPort: 8080
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: fortune-ui-config
-data:
-  application.properties: |-
-    fortune.fallbackFortune=Today is your lucky day! I'm from config map.
