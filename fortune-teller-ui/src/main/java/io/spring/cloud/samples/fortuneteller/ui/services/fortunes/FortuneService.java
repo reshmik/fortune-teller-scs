@@ -38,7 +38,10 @@ public class FortuneService {
     	
     	try {
     		
-    		fortune=restTemplate.getForObject("http://fortunes/random", Fortune.class);
+    		fortune=restTemplate.getForObject("http://fortunes:8080/random", Fortune.class);
+    		
+    		System.out.println("Printing fortune object"+fortune.getText());
+    		
     		if(fortune!=null)
     			return fortune;
     		    return new Fortune(42L, config.getMessage());
