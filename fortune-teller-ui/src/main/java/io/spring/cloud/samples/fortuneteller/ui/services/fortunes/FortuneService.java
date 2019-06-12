@@ -20,6 +20,7 @@ import io.spring.cloud.samples.fortuneteller.ui.config.UIConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 //@EnableConfigurationProperties(FortuneProperties.class)
@@ -39,21 +40,26 @@ public class FortuneService {
     	try {
     		
     		fortune=restTemplate.getForObject("http://fortunes:8080/random", Fortune.class);
-    		
-    		System.out.println("Printing fortune object"+fortune.getText());
-    		
     		if(fortune!=null)
     			return fortune;
-    		    return new Fortune(42L, config.getMessage());
+    		    return new Fortune(42L, defaultFortune());
     			
     	}
     	catch(Exception e)
     	{
-    		System.out.println("Printing out exception"+e.getMessage());
-    		return new Fortune(42L, config.getMessage());
+    		System.out.println("im in exception");
+    		return new Fortune(42L, defaultFortune());
     	}	
     	        
         
     }
+   
+
+    @GetMapping
+    public String defaultFortune() {
+    	return config.getMessage();
+    }
+    
+    
 
 }

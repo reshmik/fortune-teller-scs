@@ -1,3 +1,11 @@
 spring:
   application:
     name: ui
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      #config:
+       # sources:
+        #  - name: other
+         # - name: ${spring.application.name}

@@ -6,7 +6,10 @@ management:
     web:
       exposure:
         include: "*"
-
+  endpoint:
+    restart:
+      enabled: true
+      
 ---
 
 spring:
@@ -16,11 +19,9 @@ ribbon:
   eureka:
     enabled: false
 
-hystrix:
-  command:
-    randomFortune:
-      execution.isolation.thread.timeoutInMilliseconds: 2000
 
 fortunes:
   ribbon:
     listOfServers: localhost:8080
+
+  

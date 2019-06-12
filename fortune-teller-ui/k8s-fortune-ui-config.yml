@@ -4,4 +4,4 @@ metadata:
   name: ui
 data:
   application.properties: |-
-    bean.message=Let's fallback in time & relive great memories
+    bean.message=Let's fallback in time, hellooooo
