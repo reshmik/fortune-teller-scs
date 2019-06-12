@@ -34,6 +34,10 @@ spec:
           ports:
             - containerPort: 8080
           env:
+            - name: SPRING_JPA_DATABASE
+                value: MYSQL
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://fortune-mysql:3306/fortunesdb
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
